@@ -1,1 +1,2 @@
 .terraform
+gcp_creds_for_tf.json

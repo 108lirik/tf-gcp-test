@@ -1,7 +1,16 @@
 provider "google" {
+  credentials = "${file("gcp_creds_for_tf.json")}"
   project = "terraform-test-2019"
   region  = "us-central1"
   zone    = "us-central1-c"
+}
+
+terraform {
+  backend "gcs" {
+    bucket = "062019-terraform-state"
+    prefix = "demo"
+    credentials = "gcp_creds_for_tf.json"
+  }
 }
 
 resource "google_compute_network" "vpc_network" {
